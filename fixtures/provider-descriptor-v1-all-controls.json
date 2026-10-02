@@ -1,0 +1,60 @@
+{
+  "protocol_version": 1,
+  "provider_id": "example-guidance",
+  "display_name": "Example Guidance",
+  "settings_uri": "plugins/ExampleGuidance/settings/exampleguidance.html",
+  "capabilities": ["example_signal"],
+  "scopes": ["global_candidate"],
+  "settings_schema_version": 1,
+  "controls": [
+    {
+      "key": "enabled_by_default",
+      "type": "boolean",
+      "factory_default": 0,
+      "host_overridable": 1,
+      "label": "Use example signal",
+      "help": "Shared default for hosts that enable this provider."
+    },
+    {
+      "key": "strategy",
+      "type": "enum",
+      "values": ["balanced", "strict"],
+      "factory_default": "balanced",
+      "host_overridable": 1,
+      "label": "Example strategy",
+      "help": "How the provider prepares its bounded signal."
+    },
+    {
+      "key": "strength",
+      "type": "integer",
+      "render_as": "slider",
+      "minimum": 0,
+      "maximum": 100,
+      "step": 1,
+      "factory_default": 25,
+      "host_overridable": 1,
+      "label": "Example influence",
+      "help": "The default secondary influence for enabled hosts."
+    },
+    {
+      "key": "horizon_days",
+      "type": "integer",
+      "render_as": "number",
+      "minimum": 1,
+      "maximum": 3650,
+      "step": 1,
+      "factory_default": 180,
+      "host_overridable": 1,
+      "label": "Example horizon (days)",
+      "help": "A numeric duration must remain a numeric input in hosts."
+    }
+  ],
+  "native_spi": {
+    "provider_id": "example-guidance-native",
+    "spi_version": 2,
+    "protocol": "bliss-guidance-jsonl-v2",
+    "channels": { "example_signal": "example_signal" },
+    "artifact_kinds": [],
+    "resource_kinds": []
+  }
+}
