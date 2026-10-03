@@ -104,6 +104,19 @@ Never accept executable paths, database paths, or network destinations from
 settings form values. Native providers return structured signals and
 rationales; hosts localize logs and user-visible explanations.
 
+### Credential-safe acquisition and launch
+
+Providers that need private configuration may optionally implement two lifecycle
+hooks in addition to the descriptor/default/status/native-config methods:
+
+- `guidance_provider_acquire_artifacts_v1($resolved_policy, $trusted_context, $on_complete)` obtains only trusted artifact descriptors or a neutral diagnostic through its completion callback. The descriptor must never contain a credential, token, cookie, or an API key.
+- `guidance_provider_process_environment_v1($resolved_policy, $trusted_context)` returns a hash of process-environment values needed solely while the host starts the native provider. Names must be non-empty environment-variable names; values must be opaque scalars.
+
+The provider owns secret storage and source selection; the host owns the child
+process launch. Hosts must keep the returned environment outside native SPI
+JSON, job artifacts, command lines, logs, and preview results. A provider
+failure must become a neutral diagnostic without echoing provider details.
+
 ### Testing and packaging
 
 Copy the template, replace its example IDs, and retain its separate provider

@@ -3,7 +3,7 @@
   "provider_id": "example-guidance",
   "display_name": "Example Guidance",
   "settings_uri": "plugins/ExampleGuidance/settings/exampleguidance.html",
-  "capabilities": ["example_signal"],
+  "capabilities": ["example_signal", "lastfm_similarity", "lastfm_acquisition"],
   "scopes": ["global_candidate"],
   "settings_schema_version": 1,
   "controls": [
@@ -47,13 +47,61 @@
       "host_overridable": 1,
       "label": "Example horizon (days)",
       "help": "A numeric duration must remain a numeric input in hosts."
+    },
+    {
+      "key": "source",
+      "type": "enum",
+      "values": ["lastmix", "api_key"],
+      "factory_default": "lastmix",
+      "host_overridable": 0,
+      "label": "Last.fm source",
+      "help": "The provider owns how it obtains Last.fm relations."
+    },
+    {
+      "key": "lastfm_track_influence",
+      "type": "integer",
+      "render_as": "slider",
+      "minimum": 0,
+      "maximum": 100,
+      "step": 1,
+      "factory_default": 25,
+      "host_overridable": 1,
+      "guidance_channel": "lastfm_track",
+      "label": "Similar-track guidance (%)",
+      "help": "A bounded boost for candidates supported by similar-track evidence."
+    },
+    {
+      "key": "lastfm_artist_mode",
+      "type": "enum",
+      "values": ["target_share", "bounded_influence"],
+      "factory_default": "target_share",
+      "host_overridable": 1,
+      "label": "How similar-artist matches affect candidates",
+      "help": "Choose between target-share and bounded-influence artist guidance."
+    },
+    {
+      "key": "lastfm_artist_level",
+      "type": "integer",
+      "render_as": "slider",
+      "minimum": 0,
+      "maximum": 100,
+      "step": 1,
+      "factory_default": 75,
+      "host_overridable": 1,
+      "guidance_channel": "lastfm_artist",
+      "label": "Similar-artist guidance (%)",
+      "help": "The target share or bounded boost for similar-artist evidence."
     }
   ],
   "native_spi": {
     "provider_id": "example-guidance-native",
     "spi_version": 2,
     "protocol": "bliss-guidance-jsonl-v2",
-    "channels": { "example_signal": "example_signal" },
+    "channels": {
+      "example_signal": "example_signal",
+      "lastfm_track": "lastfm_track",
+      "lastfm_artist": "lastfm_artist"
+    },
     "artifact_kinds": [],
     "resource_kinds": []
   }
