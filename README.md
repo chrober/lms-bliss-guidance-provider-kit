@@ -13,3 +13,6 @@ The canonical host settings UI is owned by
 
 Read [the authoring guide](PROVIDER_AUTHORING_GUIDE.md), copy the template,
 replace its example IDs, and retain its separate provider settings page.
+
+Read [the provider architecture and flows](GUIDANCE_PROVIDER_ARCHITECTURE.md)
+for the component boundaries, settings precedence, and native execution path.
