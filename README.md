@@ -11,6 +11,14 @@ providers, or high-volume Rust providers. The native protocol is owned by
 The canonical host settings UI is owned by
 [lms-bliss-guidance-host](https://github.com/chrober/lms-bliss-guidance-host).
 
+## Reference implementation
+
+[lms-guidance-library-signals](https://github.com/chrober/lms-guidance-library-signals)
+is the reference implementation for this kit. It demonstrates the complete
+provider shape: descriptor, defaults, status, provider-owned settings page,
+host overrides, trusted native SPI configuration, and read-only local data
+access.
+
 ## Provider anatomy
 
 ```mermaid
