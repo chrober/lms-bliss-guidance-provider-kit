@@ -66,5 +66,42 @@ setting, then factory default. **Use inherited default** changes the form and
 its source annotation without saving; the ordinary host Save action persists
 the chosen host state.
 
-Read [the authoring guide](PROVIDER_AUTHORING_GUIDE.md), copy the template,
-replace its example IDs, and retain its separate provider settings page.
+## Authoring a provider
+
+### Choose the provider shape
+
+- **Configuration-only Perl:** discovery, defaults, and lightweight local work.
+- **JSONL executable:** any language implementing the native SPI.
+- **Rust provider:** recommended for bounded, high-volume candidate scoring.
+
+All shapes publish `guidance_provider_descriptor_v1`. The descriptor provides
+stable identity, capabilities, settings schema, and safe native-backend
+metadata. It does not contain raw HTML, JavaScript, CSS, or form callbacks.
+
+### Settings ownership
+
+Every provider has its own Lyrion settings page. It owns credentials, source
+behaviour, diagnostics, and shared defaults. A consuming host owns whether the
+provider is enabled and its sparse per-host overrides.
+
+Hosts render provider controls from the descriptor. `render_as => 'slider'`
+must stay a Material Skin slider; `render_as => 'number'` must stay a simple
+number field. Do not build custom host markup for a provider.
+
+### Native execution
+
+Use the `bliss-guidance-jsonl-v2` contract for an executable provider. Trusted
+host code supplies the program, artifacts, resources, and resolved options.
+Never accept executable paths, database paths, or network destinations from
+settings form values. Native providers return structured signals and
+rationales; hosts localize logs and user-visible explanations.
+
+### Testing and packaging
+
+Copy the template, replace its example IDs, and retain its separate provider
+settings page. Start from
+`fixtures/provider-descriptor-v1-all-controls.json`. Add a provider contract
+test for descriptor validity, defaults, status, and native configuration. Use
+the standard settings footer so users always save explicitly. Package the
+provider as an ordinary Lyrion extension; hosts discover enabled provider
+modules at runtime and default them to disabled.
