@@ -1,8 +1,7 @@
 # Guidance provider authoring guide
 
-For diagrams of the provider boundary, host opt-in, settings precedence, and
-the native execution session, read
-[Guidance provider architecture](GUIDANCE_PROVIDER_ARCHITECTURE.md).
+The [README](README.md) contains diagrams of the provider boundary, host
+opt-in, settings precedence, and native execution session.
 
 ## Choose the provider shape
 
