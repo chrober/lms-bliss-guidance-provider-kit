@@ -104,6 +104,21 @@ Never accept executable paths, database paths, or network destinations from
 settings form values. Native providers return structured signals and
 rationales; hosts localize logs and user-visible explanations.
 
+For a numeric guidance channel whose interpretation depends on a companion
+strategy control, publish that relationship in the descriptor instead of
+making a host recognize a provider ID. The initial shared form is:
+
+```text
+guidance_policy: target_share_or_bounded
+guidance_mode_key: <enum control key>
+```
+
+`target_share_or_bounded` means the numeric level is a target percentage when
+the named enum is `target_share`; when it is `bounded_influence`, the same
+level becomes a bounded per-candidate boost. The Last.fm provider is the
+reference implementation. Hosts that do not understand this optional metadata
+must leave the channel neutral rather than guessing a policy.
+
 ### Credential-safe acquisition and launch
 
 Providers that need private configuration may optionally implement two lifecycle
