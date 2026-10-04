@@ -19,6 +19,12 @@ provider shape: descriptor, defaults, status, provider-owned settings page,
 host overrides, trusted native SPI configuration, and read-only local data
 access.
 
+The released Last.fm example is
+[lms-guidance-lastfm](https://github.com/chrober/lms-guidance-lastfm). Its
+working path is LastMix/artifact-backed; the provider-owned API Key control is
+scaffolding for a future direct-acquisition implementation and is currently
+neutral in native scoring.
+
 ## Provider anatomy
 
 ```mermaid
