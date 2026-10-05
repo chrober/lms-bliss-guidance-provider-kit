@@ -7,20 +7,20 @@ host's repeat and quality constraints.
 
 Use the kit for configuration-only Perl providers, language-neutral JSONL
 providers, or high-volume Rust providers. The native protocol is owned by
-[bliss-playlist-guidance-spi](https://github.com/chrober/bliss-playlist-guidance-spi).
+[`bliss-playlist-guidance-spi`](https://github.com/chrober/bliss-playlist-guidance-spi).
 The canonical host settings UI is owned by
-[lms-bliss-guidance-host](https://github.com/chrober/lms-bliss-guidance-host).
+[`lms-bliss-guidance-host`](https://github.com/chrober/lms-bliss-guidance-host).
 
 ## Reference implementation
 
-[lms-guidance-library-signals](https://github.com/chrober/lms-guidance-library-signals)
+[`lms-guidance-library-signals`](https://github.com/chrober/lms-guidance-library-signals)
 is the reference implementation for this kit. It demonstrates the complete
 provider shape: descriptor, defaults, status, provider-owned settings page,
 host overrides, trusted native SPI configuration, and read-only local data
 access.
 
 The released Last.fm example is
-[lms-guidance-lastfm](https://github.com/chrober/lms-guidance-lastfm). Its
+[`lms-guidance-lastfm`](https://github.com/chrober/lms-guidance-lastfm). Its
 working path is LastMix/artifact-backed; the provider-owned API Key control is
 scaffolding for a future direct-acquisition implementation and is currently
 neutral in native scoring.
